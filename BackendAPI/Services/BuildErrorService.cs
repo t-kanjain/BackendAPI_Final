@@ -6,7 +6,7 @@ namespace BackendAPI.Services
     public class BuildErrorService
     {
         //To return Errors and potential fix in JSON format from build output.
-        public static string ProcessBuildOutput(string buildOutput)
+        public static string GetFixFromBuild(string buildOutput)
         {
             OpenAIClient client = new(new Uri("https://devex-openai.openai.azure.com/"), new AzureKeyCredential("92ef0980882644e691c11a96959a9514"));
             var chatCompletionsOptions = new ChatCompletionsOptions()
@@ -63,33 +63,5 @@ namespace BackendAPI.Services
             var fixedCode = response.Value.Choices[0].Message.Content;
             return fixedCode;
         }
-
-        static public string GetPotentialFix(string error)
-        {
-            OpenAIClient client = new(new Uri("https://devex-openai.openai.azure.com/"), new AzureKeyCredential("92ef0980882644e691c11a96959a9514"));
-            var chatCompletionsOptions = new ChatCompletionsOptions()
-            {
-                Messages = {
-                        new ChatMessage(ChatRole.System, @"You are a smart software developer. When given an error received after an unsuccessful build,
-                        understand the error messages and return their potential fixes."),
-
-                        new ChatMessage(ChatRole.User, "The error(s) of the unsuccessful build is as follows:"),
-                        new ChatMessage(ChatRole.User, error),
-                        new ChatMessage(ChatRole.User, $@"Return a description of the error and the potential fix for the error encountered. 
-                        Give the result for every file strictly in a structured JSON format with the following keys: ""ErrorList"" [ ""LineNumber"", ""ErrorDescription"", ""PotentialFix"" ]
-                        Incase any of the required JSON keys are not present in the error, return their valuse as ""null"".
-                        Do not leave any key nor add additional keys in any case. Do not change the JSON format.Enclose the response in square brackets []
-                        Do not give any note, statement or additional text with JSON in any case"),
-                        },
-                MaxTokens = 4000,
-                Temperature = 0,
-            };
-
-            Response<ChatCompletions> response = client.GetChatCompletions(deploymentOrModelName: "GPT35TurboModel", chatCompletionsOptions);
-            var potentialFix = response.Value.Choices[0].Message.Content;
-
-            return potentialFix;
-        }
-
     }
 }

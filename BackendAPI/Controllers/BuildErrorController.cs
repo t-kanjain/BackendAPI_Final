@@ -6,18 +6,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BackendAPI.Controllers
 {
-    [Route("buildError")]
+    [Route("api/buildError")]
     [ApiController]
     public class BuildErrorController : ControllerBase
     {
         [HttpPost]
-        public IActionResult GetProcessedBuilOutput([FromBody] string buildOutput)
+        public IActionResult GetPotentialFix([FromBody] string buildOutput)
         {
-            var processedErrors = BuildErrorService.ProcessBuildOutput(buildOutput);
-            return Ok(processedErrors);
+            var potentialFix = BuildErrorService.GetFixFromBuild(buildOutput);
+            return Ok(potentialFix);
         }
 
-        [HttpPost("solve")]
+        [HttpPost("fix")]
         public IActionResult GetModifiedCode([FromBody] BuildErrorModel errorFile)
         {
             var errorList = new List<string>();
@@ -28,14 +28,6 @@ namespace BackendAPI.Controllers
 
             var modifiedCode = BuildErrorService.FixBuildError(errorFile.inputFile, string.Join("\n", errorList));
             return Ok(modifiedCode);
-        }
-
-        [HttpPost("potentialFix")]
-        public IActionResult GetPotentialFix(string error)
-        {
-
-            var potentialFix = BuildErrorService.GetPotentialFix(error);
-            return Ok(potentialFix);
         }
     }
 }
