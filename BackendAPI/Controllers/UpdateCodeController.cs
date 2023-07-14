@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BackendAPI.Controllers
 {
-    [Route("api/updateCode")]
+    [Route("updateCode")]
     
     [ApiController]
     public class UpdateCodeController : ControllerBase
