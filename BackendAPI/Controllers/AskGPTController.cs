@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BackendAPI.Controllers
 {
-    [Route("api/askGPT")]
+    [Route("askGPT")]
     [ApiController]
     public class AskGPTController : ControllerBase
     {

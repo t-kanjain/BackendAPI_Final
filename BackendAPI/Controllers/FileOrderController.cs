@@ -8,7 +8,7 @@ using System.Reflection.Emit;
 
 namespace BackendAPI.Controllers
 {
-    [Route("api/fetchFileOrder")]
+    [Route("fetchFileOrder")]
     [ApiController]
     public class FileOrderController : ControllerBase
     {

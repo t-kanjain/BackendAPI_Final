@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-/*namespace BackendAPI.Controllers
+namespace BackendAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("classifyQuery")]
     [ApiController]
-    public class queryClassifyController : ControllerBase
+    public class ClassifyQueryController : ControllerBase
     {
         [HttpPost]
         public IActionResult GetQueryClassified([FromBody] string query)
@@ -14,4 +14,4 @@ using Microsoft.AspNetCore.Mvc;
             return Ok();
         }
     }
-}*/
+}
