@@ -1,0 +1,16 @@
+Instructions to modify appsettings.dev.json to achieve the functionality of code 2:
+
+1. Add a new section named "Security" to the "R9" section.
+2. Inside the "Security" section, add a new section named "ApplicationRegistry".
+3. Inside the "ApplicationRegistry" section, add a new array named "Applications".
+4. Inside the "Applications" array, add a new object with the following properties:
+   - "Name": Set the value to "Sample Service".
+   - "Id": Set the value to "15378825-0b3e-41f2-aac9-865f8557669f".
+   - "AadMetadata": Add a new object with the following properties:
+     - "ApplicationId": Set the value to "{aad-appId}".
+     - "Audiences": Add a new array with the value "{scopes}".
+     - "Authority": Add a new object with the following properties:
+       - "Instance": Set the value to "https://login.microsoftonline.com/".
+       - "Tenant": Set the value to "{tenantId}".
+
+Note: Replace the placeholders "{aad-appId}", "{scopes}", and "{tenantId}" with the actual values.

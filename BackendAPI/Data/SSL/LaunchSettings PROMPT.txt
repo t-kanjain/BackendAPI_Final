@@ -1,0 +1,8 @@
+Instructions to modify the launchSettings.json file to achieve the functionality of code 2:
+
+1. Open the launchSettings.json file in a text editor or IDE.
+2. Locate the "Docker" profile within the "profiles" section.
+3. Update the "launchUrl" property to use HTTPS instead of HTTP. For example, change "http://localhost:8080/api/health" to "https://localhost:8080/api/health".
+4. Save the modified launchSettings.json file.
+
+Note: Make sure to test the modified code thoroughly to ensure that it works as expected.

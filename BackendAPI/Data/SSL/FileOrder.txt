@@ -1,0 +1,20 @@
+[
+  {
+    "FileName": "appsettings.dev.json",
+    "ModificationOrder": 1,
+    "ChangeDescription": "Add a certificate to the KeyVaultData section",
+    "FileDescription": "Contains configuration settings for the development environment"
+  },
+  {
+    "FileName": "appsettings.json",
+    "ModificationOrder": 2,
+    "ChangeDescription": "Add a certificate to the KeyVaultData section",
+    "FileDescription": "Contains configuration settings for the production environment"
+  },
+  {
+    "FileName": "HostBuilder.cs",
+    "ModificationOrder": 3,
+    "ChangeDescription": "Configure Kestrel to use HTTPS with the added certificate",
+    "FileDescription": "Builds and configures the host for the application"
+  }
+]

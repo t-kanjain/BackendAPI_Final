@@ -1,0 +1,29 @@
+Instructions to modify HostBuilder.cs to achieve the functionality of code 2:
+
+1. Add the following using statements at the top of the file:
+```
+using Microsoft.R9.Extensions.Authentication;
+using Microsoft.R9.Extensions.Security.ApplicationRegistry;
+```
+
+2. In the ConfigureServices method, add the following services:
+```
+services.AddLogging();
+services.AddFakeRedaction();
+services.AddAsyncStateHttpContext();
+
+// Add R9 application registry. It contains auth related information about
+// applications such as subject names of certs or AAD app details.
+services.AddApplicationRegistryLocal(context.Configuration.GetSection("R9:Security:ApplicationRegistry"));
+
+// R9 authentication pipeline.
+// https://eng.ms/docs/experiences-devices/skype/microsoft-teams/microsoft-teams-shared-code/r9-sdk/r9-sdk-1250/docs/security/authentication
+services.AddAuthentication(AuthenticationDefaults.AuthenticationScheme)
+    .AddAuthenticationPipeline(context.Configuration.GetSection("R9:Security:Authentication"))
+    .SupportAadPolicies();
+
+// Adding default ASP.NET Core authorization.
+services.AddAuthorization();
+```
+
+3. Save the file.

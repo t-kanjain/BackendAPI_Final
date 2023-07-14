@@ -1,0 +1,20 @@
+[
+  {
+    "FileName": "appsettings.dev.json",
+    "ModificationOrder": 1,
+    "ChangeDescription": "Add Security section to the R9 section",
+    "FileDescription": "Configuration file for the application"
+  },
+  {
+    "FileName": "HostBuilder.cs",
+    "ModificationOrder": 2,
+    "ChangeDescription": "Add services for R9 authentication pipeline and application registry",
+    "FileDescription": "Class for building the host for the application"
+  },
+  {
+    "FileName": "Startup.cs",
+    "ModificationOrder": 3,
+    "ChangeDescription": "Add R9 authentication entrypoint",
+    "FileDescription": "Class for configuring the HTTP request pipeline"
+  }
+]

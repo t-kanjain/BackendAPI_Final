@@ -1,0 +1,8 @@
+Instructions to modify appsettings.json to achieve the functionality of code 2:
+
+1. Open the appsettings.json file in a text editor or IDE.
+2. Locate the "KeyVaultData" section within the "KeyVaultProviderConfig" object.
+3. Add a new object to the "Certificates" array within the "KeyVaultData" section.
+4. Within the new object, add a "KeyVaultUri" property with the value of the URI for the certificate in the Azure Key Vault.
+5. Within the new object, add a "ConfigSettingName" property with the value of the configuration setting name for the certificate.
+6. Save the changes to the appsettings.json file.

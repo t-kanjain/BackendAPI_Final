@@ -1,0 +1,6 @@
+Instructions to modify Utilities.cs to achieve the functionality of code 2:
+
+1. Open the Utilities.cs file in a code editor.
+2. Locate the GetEndPoints method.
+3. Replace the protocol "http" with "https" in the endpoint URL string.
+4. Save the changes to the file.

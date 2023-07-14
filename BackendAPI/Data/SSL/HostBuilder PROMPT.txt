@@ -1,0 +1,35 @@
+To add HTTPS support to a .NET Core web application, follow these steps:
+
+1. Add the following using statements at the top of the file:
+```
+using System.Net;
+using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
+```
+
+2. Add the following code block within the `.ConfigureWebHostDefaults` method call:
+```
+.ConfigureKestrel((context, serverOptions) =>
+{
+    var lBProbePort = int.Parse(Environment.GetEnvironmentVariable("LBProbePort"));
+    serverOptions.Listen(IPAddress.Any, lBProbePort,
+            listenOptions =>
+            {
+
+                var sslCert = "Certificates:SSL";
+                var sslConfig = context.Configuration.GetValue<string>(sslCert);
+                var _sslCert = new X509Certificate2(Convert.FromBase64String(sslConfig));
+                listenOptions.UseHttps(_sslCert);
+            });
+});
+```
+
+3. If the `CreateHostBuilder` method chain already contains a `.UseNullMetering()` method call, add the `.ConfigureWebHostDefaults` method call after it. Otherwise, add the entire `CreateHostBuilder` method chain with the `.ConfigureWebHostDefaults` method call to the file.
+
+4. If the SSL certificate is not stored in the `Certificates:SSL` configuration key, replace the `sslCert` variable with the appropriate configuration key.
+
+5. If the environment variable `LBProbePort` is not used to specify the port for the load balancer probe, replace the `lBProbePort` variable with the appropriate port number.
+
+6. Save the modified file.
+
+These steps will add the necessary code to configure Kestrel with HTTPS support to the existing code. The instructions are adaptable and applicable to any new user file, considering potential variations and changes specific to each project.

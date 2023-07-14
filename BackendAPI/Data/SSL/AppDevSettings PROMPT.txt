@@ -1,0 +1,8 @@
+Instructions to modify appsettings.dev.json to achieve the functionality of code 2:
+
+1. Open the appsettings.dev.json file in a text editor or IDE.
+2. Locate the "KeyVaultData" section under the "KeyVaultProviderConfig" section.
+3. Under the "Certificates" array, add a new object with the following properties:
+   - "KeyVaultUri": The URI of the Key Vault where the certificate is stored.
+   - "ConfigSettingName": The name of the configuration setting that will hold the certificate.
+4. Save the changes to the appsettings.dev.json file.

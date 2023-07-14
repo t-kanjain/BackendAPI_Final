@@ -1,0 +1,20 @@
+Instructions to modify Startup.cs to achieve the functionality of code 2:
+
+1. Add the following using statement at the top of the file:
+```
+using Microsoft.R9.Service.Authentication;
+```
+
+2. In the ConfigureServices method, add the following code to register the required services for R9 authentication pipeline and application registry:
+```
+services.AddAuthenticationPipeline();
+```
+
+3. In the Configure method, add the following code to enable R9 authentication entrypoint:
+```
+app.UseAuthenticationPipeline();
+```
+
+4. Save the file.
+
+Note: Make sure to follow the modification order specified in the context. Also, ensure that the necessary packages are installed and the required namespaces are imported.
